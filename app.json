@@ -1,0 +1,11 @@
+{
+  "name": "Cylic Badger Backend",
+  "description": "Backend for Cyclic Badger",
+  "keywords": [
+    "go"
+  ],
+  "image": "heroku/go:1.6",
+  "mount_dir": "src/github.com/jncornett/cyclic-badger-backend",
+  "website": "http://github.com/jncornett/cyclic-badger-backend",
+  "repository": "http://github.com/jncornett/cyclic-badger-backend"
+}

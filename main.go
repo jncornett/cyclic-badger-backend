@@ -13,10 +13,14 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+	router := gin.New()
+	router.Use(gin.Logger())
+	router.LoadHTMLGlob("templates/*.tmpl.html")
+	router.Static("/static", "static")
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	router.GET("/", func(c, *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	router.Run(":" + port)
 }
